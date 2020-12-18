@@ -1,28 +1,27 @@
 <?php
-    //namespace app\dbSqlite;
-
-    //use PDO, PDOException;
-
-    echo "Version de sqlite " . __DIR__ . '/config.db'; //. SQLite3::version();
-
-    $db = new SQLite3(__DIR__ . '/config.db');
-
-    //$db = new PDO('sqlite:' . __DIR__ . '/config.db');
-
-    var_dump($db);
-
-    /*class dbSqlite {
-        private $connect = null;
-
-        public static function dbConnect() {
-            if (empty($this->connect)) {
-                try {
-                    $this->connect = new PDO('sqlite:config.db');
-                    return $this->connect;
-                } catch (PDOException $e) {
-                    die($e->getMessage());
-                }
-            }
+    class dbSqlite {
+        
+        public function dbConnect() {
+            $db = new SQLite3(__DIR__ . '/config.db', SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
+            return $db;    
         }
-    }*/
+
+        public function runQuery($db, $query) {
+            $result = null;
+
+            $query = $db->query($query);
+
+            if (strpos($query, 'SELECT') == false) {
+                $result = $query->fetchArray(SQLITE3_ASSOC);
+            }else {
+                $result = $db->lastInsertRowID();
+            }
+
+            return $result;
+        }
+
+        public function dbClose($db) {
+            $db->close();
+        }
+    }
 ?>
