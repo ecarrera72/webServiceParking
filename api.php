@@ -1,8 +1,11 @@
 <?php
-    header("Content-Type: application/json");
-    include_once("../corteCajero/clases/classCorteCajero.php");
+    //header("Content-Type: application/json");
+    //include_once("../corteCajero/controller/corteCajero.php");
+    //require_once("controller/corteCajero.php");
+    echo "<pre>";
+    var_dump($_SERVER);
 
-    switch ($_SERVER['REQUEST_METHOD']) {
+    /*switch ($_SERVER['REQUEST_METHOD']) {
         case 'GET':
             echo 'OBTIENE ';
             
@@ -34,5 +37,5 @@
         default:
             echo 'METODO NO MANEJADO';
             break;
-    }
+    }*/
 ?>

@@ -8,7 +8,6 @@
 
         public function runQuery($db, $query) {
             $result = null;
-
             $query = $db->query($query);
 
             if (strpos($query, 'SELECT') == false) {

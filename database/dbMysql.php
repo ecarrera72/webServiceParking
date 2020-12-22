@@ -1,6 +1,5 @@
 <?php
     //require_once('dbSqlite.php');
-
     class dbMysql {
 
         public function dbConnect($data) {
